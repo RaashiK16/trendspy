@@ -81,7 +81,7 @@ export async function getSimilarProducts(productId: string){
         if(!currentProduct) return null;
 
         const similarProducts=await Product.find({
-            _id:{$ne:productId},
+            _id:{ $ne:productId },
         }).limit(3);
 
         return similarProducts
