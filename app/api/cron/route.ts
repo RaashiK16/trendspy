@@ -1,5 +1,3 @@
-"use server"
-
 import Product from "@/lib/models/product.model";
 import { connectToDB } from "@/lib/mongoose"
 import { generateEmailBody, sendEmail } from "@/lib/nodemailer";
@@ -7,13 +5,13 @@ import { scrapeAmazonProduct } from "@/lib/scraper";
 import { getAveragePrice, getEmailNotifType, getHighestPrice, getLowestPrice } from "@/lib/utils";
 import { NextResponse } from "next/server";
 
-const maxDuration = 300;
-const dynamic = "force-dynamic"
-const revalidate = 0;
+export const maxDuration = 500;
+export const dynamic = "force-dynamic"
+export const revalidate = 0;
 
 export async function GET() {
     try {
-        connectToDB();
+        await connectToDB();
         const products = await Product.find({});
         if (!products)
             throw new Error("No products found");
@@ -41,6 +39,7 @@ export async function GET() {
                 const updatedProduct = await Product.findOneAndUpdate(
                     { url: product.url },
                     product,
+                    { new: true }
                 );
 
                 // 2. CHECK EACH PRODUCTS STATUS AND SEND EMAIL ACCORDINGLY

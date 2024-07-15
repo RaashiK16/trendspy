@@ -9,16 +9,16 @@ export const connectToDB = async()=>{
         return console.log("MONGODB_URI is not defined");
 
     if(isConnected)
-        // return console.log("Using existing database connection")
+        return console.log("Using existing database connection")
 
     try {
         await mongoose.connect(process.env.MONGODB_URI,{
-            serverSelectionTimeoutMS:40000,
-            socketTimeoutMS:45000,
+            serverSelectionTimeoutMS:50000,
+            socketTimeoutMS:60000,
         })
         
         isConnected=true;
-        // console.log("Mongodb connected");
+        console.log("Mongodb connected");
     } catch (error) {
         console.log("Error - ",error)
     }
