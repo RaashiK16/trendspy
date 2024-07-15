@@ -8,6 +8,7 @@ import { getAveragePrice, getHighestPrice, getLowestPrice } from "../utils";
 import { User } from "@/types";
 import ProductDetails from "@/app/products/[id]/page";
 import { generateEmailBody, sendEmail } from "../nodemailer";
+import { useRouter } from "next/navigation";
 
 export async function scrapeAndStoreProduct(productUrl : string){
     if(!productUrl)
