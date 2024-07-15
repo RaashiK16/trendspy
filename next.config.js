@@ -6,6 +6,13 @@ const nextConfig = {
     },
     images: {
       domains: ['m.media-amazon.com']
+    },
+    webpack:(config)=>{
+      config,module.rukes.push({
+        test:/\mjs$/,
+        include: /node_modules/,
+        type:"javascript/auto",
+      })
     }
   }
   
