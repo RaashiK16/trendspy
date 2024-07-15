@@ -8,7 +8,7 @@ const nextConfig = {
       domains: ['m.media-amazon.com']
     },
     webpack:(config)=>{
-      config,module.rukes.push({
+      config,module.rules.push({
         test:/\mjs$/,
         include: /node_modules/,
         type:"javascript/auto",
