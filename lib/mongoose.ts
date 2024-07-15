@@ -12,11 +12,11 @@ export const connectToDB = async()=>{
         // return console.log("Using existing database connection")
 
     try {
-        await mongoose.connect(process.env.MONGODB_URI)
-        // ,{
-        //     serverSelectionTimeoutMS:40000,
-        //     socketTimeoutMS:45000,
-        // }
+        await mongoose.connect(process.env.MONGODB_URI,{
+            serverSelectionTimeoutMS:40000,
+            socketTimeoutMS:45000,
+        })
+        
         isConnected=true;
         // console.log("Mongodb connected");
     } catch (error) {
