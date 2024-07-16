@@ -13,8 +13,8 @@ export const connectToDB = async()=>{
 
     try {
         await mongoose.connect(process.env.MONGODB_URI,{
-            serverSelectionTimeoutMS:50000,
-            socketTimeoutMS:60000,
+            serverSelectionTimeoutMS:5000,
+            socketTimeoutMS:6000,
         })
         
         isConnected=true;
