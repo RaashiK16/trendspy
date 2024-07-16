@@ -54,7 +54,7 @@ export async function GET() {
                     const emailContent = await generateEmailBody(productInfo, emailNotifType);
                     const userEmails = updatedProduct.users.map((user:any)=>user.email)
 
-                    sendEmail(emailContent,userEmails)
+                    await sendEmail(emailContent,userEmails)
                 }
 
                 return updatedProduct
